@@ -57,6 +57,7 @@ CobBerg is architected to bring the same level of operational excellence and gov
 
 The project is divided into two main components, each structured to reflect the original Kafka and Iceberg implementations:
 
+```
 CobKa/
 ├── src/
 │   ├── CobKaProducer.cbl    # COBOL implementation of the Kafka Producer API
@@ -70,6 +71,7 @@ CobBerg/
 │   ├── CobBergTable.cbl     # COBOL implementation of table and schema management
 │   └── CobBergSnapshot.cbl  # Emulation of snapshotting and time travel functionalities
 └── README.md
+```
 
 Each repository is meticulously organized to mirror the file hierarchies and commit histories typical of modern, production-grade repositories—ensuring authenticity and long-term maintainability.
 
