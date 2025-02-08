@@ -1,6 +1,5 @@
 # CobKa & CobBerg: Bringing the Modern Data Stack to the Past
 
-**Tagline:**  
 *Bringing the modern data stack to the past, because the legacy isn't coming to the future.*
 
 ---
