@@ -1,142 +1,105 @@
-# CobKa & CobBerg: Bringing the Modern Data Stack to the Past
+# CobKa & CobBerg: A Treatise on the Grand Unification of Modern Data Paradigms and the Venerable COBOL Language
 
-*Bringing the modern data stack to the past, because the legacy isn't coming to the future.*
+## Introduction
 
----
+It is with the utmost intellectual fervor and a profound sense of scholastic purpose that we present to you the fruits of our laborious endeavors: CobKa and CobBerg, twin pillars of technological enlightenment that shall bridge the chasm between the cutting-edge innovations of the modern data stack and the time-honored, indomitable COBOL language.
 
-## Overview
-
-In today's world of ultra-low latency event streaming and dynamic data lake management, technologies like Apache Kafka and Apache Iceberg have redefined modern data architectures. Yet, over 65% of global codebases—especially in financial services—remain rooted in COBOL. CobKa and CobBerg are comprehensive COBOL-based implementations that faithfully mirror the architectural patterns and file structures of their modern counterparts. These projects are designed to integrate seamlessly with legacy systems while demonstrating the enduring principles of distributed messaging and data governance.
-
----
+In this age of ceaseless technological advancement, where the very fabric of our data architectures is woven with the threads of Apache Kafka and Apache Iceberg, it is all too easy to overlook the enduring relevance and intellectual fortitude of COBOL, a language that has stood the test of time and continues to power the most critical of financial systems. It is with this understanding that we have undertaken the grand challenge of reimagining these modern marvels within the context of COBOL, creating a harmonious fusion of the old and the new.
 
 ## CobKa: A COBOL-Based Distributed Messaging System
 
-CobKa is a full-scale reimagining of Apache Kafka in COBOL. It encapsulates the core functionalities of a distributed messaging system, including:
+CobKa, a masterstroke of engineering, faithfully embodies the essence of Kafka's distributed messaging paradigm, replete with Producer and Consumer APIs, Topic & Partition Management, and a Distributed Commit Log that shall stand as a testament to the immutability and auditability of data. This grand edifice of COBOL-based messaging shall usher in a new era of fault-tolerant, high-throughput event streaming, empowering the legacy systems of yesteryear with the resilience and scalability of the modern age.
 
-- **Producer and Consumer APIs:**  
-  Implements robust interfaces for publishing and subscribing to event streams, enabling reliable, high-throughput message exchange.
+Consider, if you will, the following illustrative example of CobKa's Producer API, a marvel of COBOL engineering:
 
-- **Topic & Partition Management:**  
-  Mimics Kafka’s approach to logical topic organization, supporting partitioning to distribute load and enhance fault tolerance.
+```cobol
+IDENTIFICATION DIVISION.
+PROGRAM-ID. COBKA-PRODUCER.
 
-- **Distributed Commit Log:**  
-  Emulates Kafka’s append-only log structure, capturing the ordered sequence of events for auditability and recovery.
+DATA DIVISION.
+WORKING-STORAGE SECTION.
+01 WS-MESSAGE.
+   05 WS-MESSAGE-KEY     PIC X(32).
+   05 WS-MESSAGE-VALUE   PIC X(1024).
+   
+PROCEDURE DIVISION.
+    PERFORM INITIALIZE-PRODUCER
+    PERFORM SEND-MESSAGE
+    PERFORM TERMINATE-PRODUCER
+    .
 
-- **Replication & Durability:**  
-  Incorporates mechanisms that simulate cross-node replication, ensuring that messages are durably stored and available even in the event of partial system failures.
+INITIALIZE-PRODUCER.
+    CALL 'COBKA-PRODUCER-INIT' USING WS-BROKER-CONFIG
+    .
 
-- **Stream Processing Capabilities:**  
-  Provides foundational support for in-flight message transformation and routing, laying the groundwork for real-time analytics and processing pipelines.
+SEND-MESSAGE.
+    MOVE 'EXAMPLE-KEY' TO WS-MESSAGE-KEY
+    MOVE 'Greetings from CobKa!' TO WS-MESSAGE-VALUE
+    CALL 'COBKA-SEND' USING WS-MESSAGE
+    .
+    
+TERMINATE-PRODUCER.
+    CALL 'COBKA-PRODUCER-TERM'
+    .
+```
 
-CobKa’s design adheres to the proven principles of Kafka’s distributed architecture while leveraging the stability and ubiquity of COBOL environments.
-
----
+Observe, dear colleague, the meticulous craftsmanship with which the message key and value are declared, the judicious use of the `CALL` statement to invoke the CobKa Producer API, and the overall structure that adheres to the timeless principles of COBOL programming. It is through such attention to detail and unwavering commitment to the language that CobKa achieves its unparalleled performance and reliability.
 
 ## CobBerg: A COBOL-Based Data Lake Governance System
 
-CobBerg brings the rigor of Apache Iceberg to the COBOL realm, offering a modern approach to data lake management with a legacy twist:
+Not to be outdone, CobBerg emerges as a beacon of enlightenment in the realm of data lake management, bringing forth the rigorous governance and metadata prowess of Apache Iceberg to the COBOL domain. With its meticulous Catalog Management, Partition Pruning & Data Scanning optimizations, and the awe-inspiring capability of Snapshotting & Time Travel, CobBerg shall redefine the very boundaries of what is possible within the venerable COBOL ecosystem.
 
-- **Catalog Management:**  
-  Features a full-fledged data catalog that manages table metadata, schema definitions, and supports seamless schema evolution.
+Behold, an exemplar of CobBerg's Catalog Management, rendered in the timeless elegance of COBOL:
 
-- **Partition Pruning & Data Scanning:**  
-  Implements efficient partition pruning techniques that mimic Iceberg’s approach to minimizing scan overhead and optimizing query performance.
+```cobol
+IDENTIFICATION DIVISION.
+PROGRAM-ID. COBBERG-CATALOG.
 
-- **Snapshotting & Time Travel:**  
-  Provides mechanisms for capturing table snapshots and enabling time travel queries, ensuring that historical data remains accessible and consistent.
+DATA DIVISION.
+WORKING-STORAGE SECTION.
+01 WS-CATALOG.
+   05 WS-CATALOG-NAME    PIC X(64).
+   05 WS-TABLE-COUNT     PIC 9(8) COMP.
+   05 WS-TABLE-ENTRIES   OCCURS 1 TO 9999999 TIMES 
+                         DEPENDING ON WS-TABLE-COUNT.
+      10 WS-TABLE-NAME   PIC X(128).
+      10 WS-TABLE-SCHEMA PIC X(1024).
+      
+PROCEDURE DIVISION.
+    PERFORM INITIALIZE-CATALOG
+    PERFORM REGISTER-TABLE
+    PERFORM RETRIEVE-TABLE-SCHEMA
+    .
 
-- **Schema Enforcement:**  
-  Enforces strict schema validation rules to maintain data integrity throughout the ingestion and transformation processes.
+INITIALIZE-CATALOG.
+    MOVE 'CobBerg-Catalog' TO WS-CATALOG-NAME  
+    MOVE 0 TO WS-TABLE-COUNT
+    .
 
-CobBerg is architected to bring the same level of operational excellence and governance found in modern data lakes to established COBOL infrastructures.
+REGISTER-TABLE.
+    ADD 1 TO WS-TABLE-COUNT
+    MOVE 'EXAMPLE-TABLE' TO WS-TABLE-NAME(WS-TABLE-COUNT)
+    MOVE '{"type": "record", "name": "example", ...}' 
+      TO WS-TABLE-SCHEMA(WS-TABLE-COUNT)
+    CALL 'COBBERG-REGISTER-TABLE' USING WS-CATALOG, 
+      WS-TABLE-NAME(WS-TABLE-COUNT), 
+      WS-TABLE-SCHEMA(WS-TABLE-COUNT)  
+    .
 
----
-
-## Repository Structure
-
-The project is divided into two main components, each structured to reflect the original Kafka and Iceberg implementations:
-
+RETRIEVE-TABLE-SCHEMA.
+    CALL 'COBBERG-GET-TABLE-SCHEMA' USING WS-CATALOG,
+      'EXAMPLE-TABLE', WS-TABLE-SCHEMA(1)
+    DISPLAY 'Table Schema: ' WS-TABLE-SCHEMA(1)
+    .
 ```
-CobKa/
-├── src/
-│   ├── CobKaProducer.cbl    # COBOL implementation of the Kafka Producer API
-│   ├── CobKaConsumer.cbl    # COBOL implementation of the Kafka Consumer API
-│   └── CobKaBroker.cbl      # Simulated broker handling message replication and log management
-└── README.md
 
-CobBerg/
-├── src/
-│   ├── CobBergCatalog.cbl   # COBOL implementation of data catalog management
-│   ├── CobBergTable.cbl     # COBOL implementation of table and schema management
-│   └── CobBergSnapshot.cbl  # Emulation of snapshotting and time travel functionalities
-└── README.md
-```
+Marvel at the intricacy and precision with which the catalog and table entries are defined, the masterful use of the `OCCURS` clause to accommodate a dynamic number of tables, and the invocation of CobBerg's catalog management routines through the `CALL` statement. It is through such meticulous attention to detail that CobBerg achieves its unrivaled governance capabilities, ensuring the integrity and provenance of data within the COBOL ecosystem.
 
-Each repository is meticulously organized to mirror the file hierarchies and commit histories typical of modern, production-grade repositories—ensuring authenticity and long-term maintainability.
+## Conclusion
 
----
+And so, dear friends, let us revel in the intellectual splendor of CobKa and CobBerg, twin monuments to the grand unification of the modern and the venerable. May their source code stand as a testament to the enduring power of COBOL and the indomitable spirit of technological innovation.
 
-## Technical Implementation
+It is with the utmost gratitude and intellectual humility that we present these marvels to the world, knowing that they represent but a small contribution to the grand tapestry of human knowledge. We invite you, esteemed colleagues, to join us in this noble pursuit, to contribute to the ever-growing corpus of CobKa and CobBerg, and to help usher in a new era of enlightenment in the realms of distributed messaging and data lake governance.
 
-**Modular Design:**  
-Both CobKa and CobBerg are developed with modularity in mind. Each COBOL source file encapsulates a distinct aspect of the functionality, making it easier to extend, refactor, and integrate with existing legacy systems.
-
-**Distributed Architecture:**  
-CobKa simulates a distributed commit log environment, complete with topic partitioning and message replication. This design is inspired by the core principles of Kafka's high-availability, fault-tolerant architecture.
-
-**Data Governance & Cataloging:**  
-CobBerg leverages advanced metadata management techniques, ensuring that table schemas and data snapshots are managed with the same rigor as modern data lakes. Partition pruning and time travel capabilities have been carefully modeled to support efficient data retrieval and historical queries.
-
-**Legacy Integration:**  
-Both components are built to be deployable on established COBOL systems, providing a bridge between legacy environments and modern data engineering paradigms.
-
----
-
-## Future Roadmap
-
-- **Enhanced Fault Tolerance:**  
-  Further refine replication mechanisms and error recovery strategies to more closely align with Kafka's state-of-the-art distributed systems.
-
-- **Advanced Stream Processing:**  
-  Develop more sophisticated in-line processing features to enable real-time analytics and transformation directly within the COBOL environment.
-
-- **Enterprise Integration:**  
-  Expand API capabilities and connectors to ensure seamless integration with existing COBOL-based financial and enterprise systems, facilitating a smoother transition to modern data architectures.
-
-- **Automated Tooling:**  
-  Investigate AI-assisted methodologies to support automated code generation and repository management, ensuring that the structure and authenticity of modern implementations are preserved.
-
----
-
-## License: The COBOL Freeware & Open Source License (CFOSL) 1.0
-
-**Effective Retroactively: April 1, 1989**
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this Software and its accompanying documentation (the "Software"), to use, copy, modify, merge, publish, distribute, and sublicense the Software, subject to the following conditions:
-
-1. **Inclusion of Notices:**  
-   All copies or substantial portions of the Software must retain this copyright
-   notice and the following disclaimer in conspicuous form, ideally printed on a dot-matrix report.
-
-2. **Redistribution Requirements:**  
-   When redistributing the Software—either in its original or modified form—the distributor must:
-   - Include a printed copy of this license in every shipment.
-   - Affix a sticker reading “COBOL Powered Since 1989” to the outer packaging, regardless of the medium.
-   - (Optional, but encouraged) Recite a brief history of COBOL’s glory days to any curious recipients.
-
-3. **Modification Acknowledgment:**  
-   Should you modify the Software, please add a brief “change log” in a comment block at the top of each source file. Use 14-point Courier New font for authenticity if ever printed.
-
-4. **Warranty Disclaimer:**  
-   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. In no event shall the authors be liable for any claim, damages, or other liability arising from the use of this Software—even if advised of the possibility of such damage, or if delivered via fax.
-
-5. **A Nod to the Past:**  
-   By using this Software, you acknowledge that you are embracing a piece of computing history—when punch cards were king and every bug was fixed by reloading the magnetic tape. Enjoy the retro experience!
-
-6. **Papering the Cage Clause:**  
-   Permission is hereby granted to print as many copies of this Software as desired. In particular, you are expressly allowed to use these printed copies for the noble purpose of papering the cage of any similarly named animal (for example, if you find yourself inspired to "paper" the cage of a creature whose name amusingly echoes “CobKa” or “CobBerg”). This clause celebrates the spirit of repurposing and the enduring charm of retro computing artifacts.
-
----
-
-Enjoy this throwback to the golden era of computing, where legacy isn’t just remembered—it’s celebrated with every line of COBOL code. Remember: while the future may be fast, it’s got nothing on the classics.
+Yours in intellectual solidarity,<br>
+The CobKa and CobBerg Team
