@@ -1,4 +1,3 @@
-```markdown
 ## License: The COBOL Freeware & Open Source License (CFOSL) 1.0
 
 **Effective Retroactively: April 1, 1989**
@@ -27,4 +26,4 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 ---
 
 Enjoy this throwback to the golden era of computing, where the legacy isn’t just remembered—it’s celebrated with every line of COBOL code. Remember: the future may be fast, but it’s got nothing on the classics.
-```
+
