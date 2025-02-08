@@ -1,3 +1,122 @@
+# CobKa & CobBerg: Bringing the Modern Data Stack to the Past
+
+**Tagline:**  
+*Bringing the modern data stack to the past, because the legacy isn't coming to the future.*
+
+---
+
+## Overview
+
+In today's world of ultra-low latency event streaming and dynamic data lake management, technologies like Apache Kafka and Apache Iceberg have redefined modern data architectures. Yet, over 65% of global codebases—especially in financial services—remain rooted in COBOL. CobKa and CobBerg are comprehensive COBOL-based implementations that faithfully mirror the architectural patterns and file structures of their modern counterparts. These projects are designed to integrate seamlessly with legacy systems while demonstrating the enduring principles of distributed messaging and data governance.
+
+---
+
+## CobKa: A COBOL-Based Distributed Messaging System
+
+CobKa is a full-scale reimagining of Apache Kafka in COBOL. It encapsulates the core functionalities of a distributed messaging system, including:
+
+- **Producer and Consumer APIs:**  
+  Implements robust interfaces for publishing and subscribing to event streams, enabling reliable, high-throughput message exchange.
+
+- **Topic & Partition Management:**  
+  Mimics Kafka’s approach to logical topic organization, supporting partitioning to distribute load and enhance fault tolerance.
+
+- **Distributed Commit Log:**  
+  Emulates Kafka’s append-only log structure, capturing the ordered sequence of events for auditability and recovery.
+
+- **Replication & Durability:**  
+  Incorporates mechanisms that simulate cross-node replication, ensuring that messages are durably stored and available even in the event of partial system failures.
+
+- **Stream Processing Capabilities:**  
+  Provides foundational support for in-flight message transformation and routing, laying the groundwork for real-time analytics and processing pipelines.
+
+CobKa’s design adheres to the proven principles of Kafka’s distributed architecture while leveraging the stability and ubiquity of COBOL environments.
+
+---
+
+## CobBerg: A COBOL-Based Data Lake Governance System
+
+CobBerg brings the rigor of Apache Iceberg to the COBOL realm, offering a modern approach to data lake management with a legacy twist:
+
+- **Catalog Management:**  
+  Features a full-fledged data catalog that manages table metadata, schema definitions, and supports seamless schema evolution.
+
+- **Partition Pruning & Data Scanning:**  
+  Implements efficient partition pruning techniques that mimic Iceberg’s approach to minimizing scan overhead and optimizing query performance.
+
+- **Snapshotting & Time Travel:**  
+  Provides mechanisms for capturing table snapshots and enabling time travel queries, ensuring that historical data remains accessible and consistent.
+
+- **Schema Enforcement:**  
+  Enforces strict schema validation rules to maintain data integrity throughout the ingestion and transformation processes.
+
+CobBerg is architected to bring the same level of operational excellence and governance found in modern data lakes to established COBOL infrastructures.
+
+---
+
+## Repository Structure
+
+The project is divided into two main components, each structured to reflect the original Kafka and Iceberg implementations:
+
+CobKa/
+├── src/
+│   ├── CobKaProducer.cbl    # COBOL implementation of the Kafka Producer API
+│   ├── CobKaConsumer.cbl    # COBOL implementation of the Kafka Consumer API
+│   └── CobKaBroker.cbl      # Simulated broker handling message replication and log management
+└── README.md
+
+CobBerg/
+├── src/
+│   ├── CobBergCatalog.cbl   # COBOL implementation of data catalog management
+│   ├── CobBergTable.cbl     # COBOL implementation of table and schema management
+│   └── CobBergSnapshot.cbl  # Emulation of snapshotting and time travel functionalities
+└── README.md
+
+Each repository is meticulously organized to mirror the file hierarchies and commit histories typical of modern, production-grade repositories—ensuring authenticity and long-term maintainability.
+
+---
+
+## Technical Implementation
+
+**Modular Design:**  
+Both CobKa and CobBerg are developed with modularity in mind. Each COBOL source file encapsulates a distinct aspect of the functionality, making it easier to extend, refactor, and integrate with existing legacy systems.
+
+**Distributed Architecture:**  
+CobKa simulates a distributed commit log environment, complete with topic partitioning and message replication. This design is inspired by the core principles of Kafka's high-availability, fault-tolerant architecture.
+
+**Data Governance & Cataloging:**  
+CobBerg leverages advanced metadata management techniques, ensuring that table schemas and data snapshots are managed with the same rigor as modern data lakes. Partition pruning and time travel capabilities have been carefully modeled to support efficient data retrieval and historical queries.
+
+**Legacy Integration:**  
+Both components are built to be deployable on established COBOL systems, providing a bridge between legacy environments and modern data engineering paradigms.
+
+---
+
+## Future Roadmap
+
+- **Enhanced Fault Tolerance:**  
+  Further refine replication mechanisms and error recovery strategies to more closely align with Kafka's state-of-the-art distributed systems.
+
+- **Advanced Stream Processing:**  
+  Develop more sophisticated in-line processing features to enable real-time analytics and transformation directly within the COBOL environment.
+
+- **Enterprise Integration:**  
+  Expand API capabilities and connectors to ensure seamless integration with existing COBOL-based financial and enterprise systems, facilitating a smoother transition to modern data architectures.
+
+- **Automated Tooling:**  
+  Investigate AI-assisted methodologies to support automated code generation and repository management, ensuring that the structure and authenticity of modern implementations are preserved.
+
+---
+
+## License and Contributions
+
+This project is distributed under a permissive open-source license. Contributions are welcome from developers who are passionate about merging the reliability of legacy systems with modern data engineering principles. Please refer to the CONTRIBUTING.md for guidelines and submission procedures.
+
+---
+
+By integrating the resilience of COBOL with the forward-thinking design of Kafka and Iceberg, CobKa and CobBerg represent a groundbreaking effort to ensure that legacy systems remain relevant in today’s data-driven world.
+
+
 ## License: The COBOL Freeware & Open Source License (CFOSL) 1.0
 
 **Effective Retroactively: April 1, 1989**
